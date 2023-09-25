@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script
+			type="text/javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+		></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$("#navigation li").on("click", function () {
+					//live대신 on메서드로 바꿔줌
+					//최신 제이쿼리에서는 live를 안씀
+					$("#navigation li").removeClass("selected");
+					$(this).addClass("selected");
+				});
+			}); //첫번째 #navigation li와 두번째 #navigation li는 서로 독립적인 대상임
+
+			//클릭이 일어났을때 뒤의 함수가 실행됨
+			//클릭이된상태에서 문서 전체에서 "#navagation li"를 찾아서
+			//#navagation li의 클래스 selected를 제거하고 this(클릭된 대상)에 selected클래스 붙임
+		</script>
+		<style type="text/css">
+			#navigation li {
+				list-style: none;
+				float: left;
+				padding: 5px;
+			}
+
+			#navigation {
+				cursor: point;
+			}
+			#navigation .selected {
+				background-color: blue;
+				color: red;
+			}
+		</style>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="navigation">
+			<li>jeoung</li>
+			<li>eun</li>
+			<li>song</li>
+			<li>babo_ddong.jang_E</li>
+			<li class="selected">beggar</li>
+			<li>PHP</li>
+			<li>mySql</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul>
+			<li>test2</li>
+		</ul>
+		<ul class="foo">
+			<li>test</li>
+		</ul>
+		<script
+			type="text/javascript"
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+		></script>
+		<script type="text/javascript">
+            (($) => {
+                $("ul.foo").click(function () {
+                //아예 클릭이라는 메서드를 실행하고있음 : 제이쿼리 이벤트 헬퍼라고 불림
+                //실제 메서드가 아니고 제이쿼리가 해석해준다고 생각하면됨
+                //두번째 제이쿼리 제어방법 
+                    $("li", this).css("background-color", "red");
+                    //함수 내부에 this가 없다면셀렉터가 선택하는 대상이 <li>test2</li> li>test</li> 둘다 될수있음
+                    //두번째 매개변수 this를 넣어서 두번째 li만 css 적용되게함
+                    //, this를 제거하고 실행시키면 li둘다 css적용돼서 백그라운드색이 변함
+                });
+            })(jQuery);
+
+            /* 바디 까맣게 */
+            // (($) => {
+            //     $("body").ready(function () {
+            //         $("body", this).css("background-color", "black");
+            //     });
+            // })(jQuery);
+
+            //jQuery(document.body).ccss("background-color", "black");//특정 요소만 선택하는게아니고 전체를 잡는것
+        </script>
+	</body>
+</html>
