@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			/* div{
+        border:2px blud solid;
+       } */
+			p {
+				color: blue;
+				margin: 8px;
+			}
+            div,p{
+                margin-left:10px;
+            }
+            span{
+                color:red;
+            }
+			.blue {
+				color: blue;
+			}
+			.highlight {
+				background: yellow;
+			}
+			/* strong{
+            color:red;
+        } */
+		</style>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<!-- 가장최신버전을 사용하겠다 -->
+	</head>
+	<body>
+		<!-- <p>I would like to say :</p> -->
+
+		<!-- <span>Span text</span>
+    <strong>What about me?</strong>
+    <span>Another one</span> -->
+
+		<!-- <p>Hello</p>
+    How are
+    <p>you?</p>
+    <button>Call remove() on paragraph</button>
+    <script>
+        $("button").click(()=>{//이벤트헬퍼를 이용해서 바로 click을 달아주고있음
+            $("p").remove();//remove라는 메세드 실행
+        })
+    </script> -->
+
+		<!-- <p>Hello</p>
+    <p>cruel</p>
+    <p>World</p> -->
+
+		<!-- <p class="blue">click to toggle</p>
+		<p class="blue highlight">highlight</p>
+		<p class="blue">on these</p>
+		<p class="blue">paragraph</p>
+		<script>
+			$("p").click(function () {
+				$(this).toggleClass("highlight"); //toggleClass : (highlight)클래스가 존재하면 삭제, 존재하지않으면 클래스를 추가해줌
+			});
+		</script> -->
+
+		<!-- <input type="text" value="some text" />
+		<p></p>
+		<script>
+			$("input").keyup(function () {
+				const value = $(this).val(); //키업이 발생한 컨텍스트에서
+				//val() : 특정한 엘리먼트의 밸류값을 리턴해주는 메서드
+				$("p").text(value); //인풋에 입력한 값이 p에 들어감
+			})
+			.keyup();//일종의 트리거임 얘를 빼고 실행하면 p태그 여역에 값이 추가가 안됨
+			//얘가 실행이돼야 실제 트리거로서 동작이돼서 위의 함수가 실행됨
+			//얘가 키업을 호출해준다고보면됨
+		</script> -->
+
+        <!-- <p>
+            <input type="text" />
+            <span></span>
+        </p>
+        <script>
+            $("input").focus(function() {$(this).next("span").html("focus");})
+            .blur(function(){
+                $(this).next("span").html("blur");
+            })
+            .select(function(){
+                $(this).next("span").html("select");
+            })
+            .change(function(e){
+                alert("change!! " + $(e.target).val());
+            });
+        </script> -->
+
+        <p>Type 'correct' to validate</p>
+        <form action="javascript:alert('success!');">  <!-- action에 자바스크립트 사용가능  -->
+            <div>
+                <input type="text" />
+                <input type="submit" />  <!-- submit하면 action의 주소로 감 -->
+            </div>
+        </form>
+        <span></span>
+        <script>
+            $("form").submit(function(){//submit 실행될때 함수 실행됨
+                //submit이 눌렸을때 이벤트핸들러가 실행되고 리턴값이 트루면 액션이 실행되고 false면 실행안함
+                if($("input:first").val() == "correct"){
+                    $("span").text("Validated...").show();
+                    return true;//리턴을 이용해서 추가적인 액션을 할지말지 
+                }
+                $("span").text("Not valid").show().fadeOut(1000);
+                //else를 쓰지않고 또다른 구문을 쓴 이유  : 위에서 어차피 함수가 끝나니까
+                //false값이 입력됐을때 fadeout이 돼서 텍스트가 사라지니까 위에 다시 show를 해주는거임
+                return false;
+            });
+        </script>
+	</body>
+</html>

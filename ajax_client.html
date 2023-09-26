@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+  </head>
+  <body>
+    <div id="result"></div>
+    <input type="text" id="msg" />
+    <input type="button" value="get result" id="getResult" />
+    <script>
+      $("#getResult").click(function () {
+        $("#result").html("");
+        $.ajax({
+          url: "http://localhost:9999/ajax_server.php",
+          dataType: "json",
+          type: "POST",
+          data: { msg: $("#msg").val() },//응답메세지를 ajax_server.php로 보냄
+          success: function (result) {
+            if (result["result"] == true) {//if문이 있어도 없어도 상관없음
+              $("#result").html(result["msg"]);//이부분이중요
+            }
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
